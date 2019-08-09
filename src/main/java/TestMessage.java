@@ -1,3 +1,4 @@
+import net.sf.json.JSONObject;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -37,7 +38,12 @@ public class TestMessage {
     public void callRobotTest(String user,String date, String phone) throws Exception {
         System.out.println("当前日期-----"+TestUtil.getCurrentDate());
         System.out.println("值班日期-----"+TestUtil.getDate(date));
-        String msgJsonString = "{ \"msgtype\": \"text\",\"text\": {\"content\": \"erp duty\",\"mentioned_mobile_list\":"+phone+"}}";
+        JSONObject msgJsonString = new JSONObject();
+        JSONObject jsonObject2 = new JSONObject();
+        msgJsonString.put("msgtype","text");
+        jsonObject2.put("content",user+"erp值班");
+        jsonObject2.put("mentioned_mobile_list",phone);
+        msgJsonString.put("text",jsonObject2);
         System.out.println(msgJsonString);
         //看当前日期和值班日期
         if(TestUtil.getCurrentDate().equals(TestUtil.getDate(date))){
