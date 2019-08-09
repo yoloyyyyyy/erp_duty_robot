@@ -20,7 +20,7 @@ import java.util.GregorianCalendar;
 public class TestUtil {
     //遍历excel
     public static Object[][] dtt(String filePath) throws IOException{
-        
+
         File file = new File(filePath);
         FileInputStream fis = new FileInputStream(file);
 
@@ -73,7 +73,7 @@ public class TestUtil {
         }
         return dttData;
     }
-    
+
     public static String getDate(String date){
         Calendar calendar = new GregorianCalendar(1900,0,-1);
         Date d = calendar.getTime();
@@ -91,5 +91,5 @@ public class TestUtil {
         String current_date = d.format(nowdate);
         return current_date;
     }
-    
+
 }

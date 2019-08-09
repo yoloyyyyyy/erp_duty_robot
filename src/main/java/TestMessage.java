@@ -16,15 +16,13 @@ public class TestMessage {
     RestClient restClient;
     CloseableHttpResponse closeableHttpResponse;
     String url="https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=3b35468f-0f4a-47d3-a30e-8681eca04c63";
-    String excelData="C:\\Users\\yolo\\IdeaProjects\\ModelProject\\interface\\src\\main\\resources\\ERP值班.xlsx";
+    String excelData=System.getProperty("user.dir")+"\\src\\main\\resources\\ERP值班.xlsx";
     //header
     HashMap<String ,String> postHeader = new HashMap<String, String>();
     @BeforeClass
     public void setUp(){
         restClient = new RestClient();
         postHeader.put("Content-Type","application/json");
-        //载入配置文件，接口endpoint
-        //载入配置文件，post接口参数
     }
 
     @DataProvider(name = "postData")
@@ -33,7 +31,7 @@ public class TestMessage {
     }
 
     @Test(dataProvider = "postData")
-    public void callRobot(String user,String date, String phone) throws Exception {
+    public void callRobotTest(String user,String date, String phone) throws Exception {
         System.out.println(TestUtil.getCurrentDate());
         System.out.println(TestUtil.getDate(date));
         String msgJsonString = "{ \"msgtype\": \"text\",\"text\": {\"content\": \"ERP的bug群值班啦\",\"mentioned_mobile_list\":"+phone+"}}";
