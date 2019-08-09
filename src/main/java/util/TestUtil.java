@@ -1,6 +1,7 @@
 package util;
 
 import org.apache.commons.lang.time.DateUtils;
+import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -91,5 +92,9 @@ public class TestUtil {
         String current_date = d.format(nowdate);
         return current_date;
     }
-
+    //获取状态码
+    public static int getStatusCode(CloseableHttpResponse closeableHttpResponse){
+        int StatusCode = closeableHttpResponse.getStatusLine().getStatusCode();
+        return StatusCode;
+    }
 }
