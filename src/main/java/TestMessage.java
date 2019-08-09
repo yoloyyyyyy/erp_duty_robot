@@ -42,7 +42,7 @@ public class TestMessage {
             System.out.println("发送消息");
             closeableHttpResponse = restClient.doPost(url,msgJsonString,postHeader);
             int statusCode = TestUtil.getStatusCode(closeableHttpResponse);
-            Assert.assertEquals(statusCode,0);
+            Assert.assertEquals(statusCode,200);
             Reporter.log("状态码："+statusCode,true);
         }
     }
