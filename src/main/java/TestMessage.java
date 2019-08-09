@@ -41,13 +41,12 @@ public class TestMessage {
         JSONObject msgJsonString = new JSONObject();
         JSONObject jsonObject2 = new JSONObject();
         msgJsonString.put("msgtype","text");
-        jsonObject2.put("content",user+"erp值班啦");
+        jsonObject2.put("content",user+",erp值班啦");
         jsonObject2.put("mentioned_mobile_list",phone);
         msgJsonString.put("text",jsonObject2);
         System.out.println(msgJsonString);
         //看当前日期和值班日期
         if(TestUtil.getCurrentDate().equals(TestUtil.getDate(date))){
-            System.out.println("发送消息");
             closeableHttpResponse = restClient.doPost(url,msgJsonString,postHeader);
             int statusCode = TestUtil.getStatusCode(closeableHttpResponse);
             Assert.assertEquals(statusCode,200);
