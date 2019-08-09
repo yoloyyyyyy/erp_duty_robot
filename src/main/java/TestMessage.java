@@ -41,7 +41,7 @@ public class TestMessage {
         JSONObject msgJsonString = new JSONObject();
         JSONObject jsonObject2 = new JSONObject();
         msgJsonString.put("msgtype","text");
-        jsonObject2.put("content",user+"erp值班");
+        jsonObject2.put("content",user+"erp值班啦");
         jsonObject2.put("mentioned_mobile_list",phone);
         msgJsonString.put("text",jsonObject2);
         System.out.println(msgJsonString);
