@@ -37,7 +37,7 @@ public class TestMessage {
     public void callRobotTest(String user,String date, String phone) throws Exception {
         System.out.println("当前日期-----"+TestUtil.getCurrentDate());
         System.out.println("值班日期-----"+TestUtil.getDate(date));
-        String msgJsonString = "{ \"msgtype\": \"text\",\"text\": {\"content\": \"ERP值班提醒\",\"mentioned_mobile_list\":"+phone+"}}";
+        String msgJsonString = "{ \"msgtype\": \"text\",\"text\": {\"content\": \"erp duty\",\"mentioned_mobile_list\":"+phone+"}}";
         System.out.println(msgJsonString);
         //看当前日期和值班日期
         if(TestUtil.getCurrentDate().equals(TestUtil.getDate(date))){
