@@ -89,7 +89,10 @@ public class TestUtil {
         SimpleDateFormat d = new SimpleDateFormat();
         d.applyPattern("yyyy-MM-dd");
         Date nowdate = new Date();
-        String current_date = d.format(nowdate);
+        Calendar c = Calendar.getInstance();
+        c.setTime(nowdate);
+        c.add(Calendar.DAY_OF_MONTH, 1);
+        String current_date = d.format(c.getTime());//获取当前时间+1天
         return current_date;
     }
     //获取状态码
