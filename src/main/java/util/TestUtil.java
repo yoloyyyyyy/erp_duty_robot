@@ -85,6 +85,32 @@ public class TestUtil {
         String str_date = sdf.format(dd);
         return str_date;
     }
+
+    /**
+     * 获取当前天数的星期
+     * @return
+     */
+    public static String getWeekByDate(String date){
+        String[] weekDays = { "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" };
+        int w=0;
+        try{
+            Calendar calendar = new GregorianCalendar(1900,0,-1);
+            Date d = calendar.getTime();
+            Date dd = DateUtils.addDays(d,Integer.valueOf(date));
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(dd);
+             w= cal.get(Calendar.DAY_OF_WEEK) - 1;
+            if(w<0){
+                w=0;
+            }
+            System.out.println(weekDays[w]);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return weekDays[w];
+        
+    }
+    
     public static String getCurrentDate(){
         SimpleDateFormat d = new SimpleDateFormat();
         d.applyPattern("yyyy-MM-dd");

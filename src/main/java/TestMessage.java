@@ -41,8 +41,12 @@ public class TestMessage {
         JSONObject msgJsonString = new JSONObject();
         JSONObject jsonObject2 = new JSONObject();
         msgJsonString.put("msgtype","text");
-        jsonObject2.put("content",user+",明天erp值班啦");
         jsonObject2.put("mentioned_mobile_list",phone);
+        if(TestUtil.getWeekByDate(date).equals("星期六")){
+            jsonObject2.put("content",user+",明天是周六~~~ERP值班别忘记了");
+        }else {
+            jsonObject2.put("content",user+",明天ERP值班啦");
+        }
         msgJsonString.put("text",jsonObject2);
         System.out.println(msgJsonString);
         //看当前日期和值班日期
