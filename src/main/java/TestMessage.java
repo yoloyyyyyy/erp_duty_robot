@@ -18,7 +18,7 @@ import static util.TestUtil.dtt;
 public class TestMessage {
     RestClient restClient;
     CloseableHttpResponse closeableHttpResponse;
-    String url="https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=3b35468f-0f4a-47d3-a30e-8681eca04c63";
+    String url="https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=03ace3df-6169-4a82-ba66-645810dbcd7f";
     String excelData=System.getProperty("user.dir")+"/src/main/resources/ERP值班.xlsx";
     //header
     HashMap<String ,String> postHeader = new HashMap<String, String>();
