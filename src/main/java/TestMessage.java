@@ -43,9 +43,9 @@ public class TestMessage {
         msgJsonString.put("msgtype","text");
         jsonObject2.put("mentioned_mobile_list",phone);
         if(TestUtil.getWeekByDate(date).equals("星期六")){
-            jsonObject2.put("content",user+",明天是周六~~~ERP值班别忘记了");
+            jsonObject2.put("content","明天是周六~~~ERP值班别忘记了");
         }else {
-            jsonObject2.put("content",user+",明天ERP值班啦");
+            jsonObject2.put("content","明天ERP值班啦");
         }
         msgJsonString.put("text",jsonObject2);
         System.out.println(msgJsonString);
