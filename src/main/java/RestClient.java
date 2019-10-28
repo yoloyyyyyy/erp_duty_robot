@@ -1,4 +1,6 @@
 import net.sf.json.JSONObject;
+import org.apache.http.client.config.CookieSpecs;
+import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
@@ -17,7 +19,10 @@ public class RestClient {
     
     public  CloseableHttpResponse doPost(String url, JSONObject entityString, HashMap<String,String> headermap) throws IOException {
         //创建一个可关闭的HttpClient对象
-        CloseableHttpClient httpclient = HttpClients.createDefault();
+        CloseableHttpClient httpclient = HttpClients.custom()
+                .setDefaultRequestConfig(RequestConfig.custom()
+                        .setCookieSpec(CookieSpecs.STANDARD).build())
+                .build();//请求头无效属性的问题
         HttpPost httppost = new HttpPost(url);
         httppost.setEntity(new StringEntity(entityString.toString(), HTTP.UTF_8));
         //加载请求头到httppost对象
