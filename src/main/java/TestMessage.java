@@ -50,11 +50,24 @@ public class TestMessage {
         msgJsonString.put("text",jsonObject2);
         System.out.println(msgJsonString);
         //看当前日期和值班日期
-        if(TestUtil.getCurrentDate().equals(TestUtil.getDate(date))){
+/*        if(TestUtil.getCurrentDate().equals(TestUtil.getDate(date))){
             closeableHttpResponse = restClient.doPost(url,msgJsonString,postHeader);
             int statusCode = TestUtil.getStatusCode(closeableHttpResponse);
             Assert.assertEquals(statusCode,200);
             Reporter.log("状态码："+statusCode,true);
-        }
+        }*/
+    }
+    @Test
+    public void taskRemindTest() throws IOException{
+        JSONObject msgJsonString = new JSONObject();
+        JSONObject jsonObject2 = new JSONObject();
+        msgJsonString.put("msgtype","text");
+        jsonObject2.put("content","下班前记得填下花费~~");
+        msgJsonString.put("text",jsonObject2);
+        System.out.println(msgJsonString);
+       closeableHttpResponse = restClient.doPost(url,msgJsonString,postHeader);
+        int statusCode = TestUtil.getStatusCode(closeableHttpResponse);
+        Assert.assertEquals(statusCode,200);
+        Reporter.log("状态码："+statusCode,true);
     }
 }

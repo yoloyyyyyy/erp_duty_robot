@@ -3,11 +3,22 @@
 <suite name="All Test Suite">
     <test name = "TestMessageClass" >
         <classes>
-            <class name="TestMessage" >
+         <class name="TestMessage" >
                 <methods>
                     <include name = "callRobotTest" />
+                    <include name = "taskRemindTest" />
+                </methods>
+           </class> 
+<!--            <class name="TestBranch" >
+                <methods>
+                    <include name = "parcelDetailTest" />
                 </methods>
             </class>
+            <class name="Login" >
+                <methods>
+                    <include name = "loginTest" />
+                </methods>
+            </class>-->
         </classes>
     </test>
 </suite>

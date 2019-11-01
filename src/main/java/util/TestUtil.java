@@ -19,6 +19,7 @@ import java.util.GregorianCalendar;
  * Created by yolo on 2019/8/7.
  */
 public class TestUtil {
+    public final static String COOKIE = "65_admin=\"140003A592594F44,erp:1iMTSn:SfwSIsBbOwaicRAl9RKgQdzDlN4\"" ;
     //遍历excel
     public static Object[][] dtt(String filePath) throws IOException{
 
