@@ -6,6 +6,7 @@
          <class name="TestMessage" >
                 <methods>
                     <include name = "callRobotTest" />
+                    <include name = "taskRemindTest" />
                 </methods>
            </class> 
 <!--            <class name="TestBranch" >
