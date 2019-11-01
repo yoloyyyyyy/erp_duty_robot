@@ -127,4 +127,15 @@ public class TestUtil {
         int StatusCode = closeableHttpResponse.getStatusLine().getStatusCode();
         return StatusCode;
     }
+    
+    public static Boolean isWeekend(){
+        Date date = new Date();
+        Calendar  calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        if(calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SATURDAY || calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

@@ -65,9 +65,13 @@ public class TestMessage {
         jsonObject2.put("content","下班前记得填下花费~~");
         msgJsonString.put("text",jsonObject2);
         System.out.println(msgJsonString);
-       closeableHttpResponse = restClient.doPost(url,msgJsonString,postHeader);
-        int statusCode = TestUtil.getStatusCode(closeableHttpResponse);
-        Assert.assertEquals(statusCode,200);
-        Reporter.log("状态码："+statusCode,true);
+        if (TestUtil.isWeekend()){
+            System.out.println("今天休息");
+        }else {
+            closeableHttpResponse = restClient.doPost(url,msgJsonString,postHeader);
+            int statusCode = TestUtil.getStatusCode(closeableHttpResponse);
+            Assert.assertEquals(statusCode,200);
+            Reporter.log("状态码："+statusCode,true); 
+        }
     }
 }
