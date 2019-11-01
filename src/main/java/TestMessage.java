@@ -1,5 +1,7 @@
 import net.sf.json.JSONObject;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -63,9 +65,9 @@ public class TestMessage {
         jsonObject2.put("content","下班前记得填下花费~~");
         msgJsonString.put("text",jsonObject2);
         System.out.println(msgJsonString);
-  /*      closeableHttpResponse = restClient.doPost(url,msgJsonString,postHeader);
+       closeableHttpResponse = restClient.doPost(url,msgJsonString,postHeader);
         int statusCode = TestUtil.getStatusCode(closeableHttpResponse);
         Assert.assertEquals(statusCode,200);
-        Reporter.log("状态码："+statusCode,true);*/
+        Reporter.log("状态码："+statusCode,true);
     }
 }
