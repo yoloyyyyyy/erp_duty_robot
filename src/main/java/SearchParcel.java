@@ -35,11 +35,14 @@ public class SearchParcel {
         JSONObject msgJsonString = new JSONObject();
         msgJsonString.put("isEtaExpired",false);
         msgJsonString.put("limit","20");
+        msgJsonString.put("offset","0");
         msgJsonString.put("regionId","100000000");
         msgJsonString.put("nickName","sgys301");
+        System.out.println(msgJsonString);
         closeableHttpResponse = restClient.doPost(url,msgJsonString,postHeader);
         HttpEntity httpEntity = closeableHttpResponse.getEntity();
         String responseEntity = EntityUtils.toString(httpEntity);
+        System.out.println(responseEntity);
         String nickName = JsonPath.read(responseEntity,"$.items[0].parcelStatus");//返回结果获取对应的值
         int statusCode = TestUtil.getStatusCode(closeableHttpResponse);
         Assert.assertEquals(statusCode,200);
