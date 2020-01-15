@@ -8,17 +8,7 @@
                     <include name = "callRobotTest" />
                     <include name = "taskRemindTest" />
                 </methods>
-           </class> 
-<!--            <class name="TestBranch" >
-                <methods>
-                    <include name = "parcelDetailTest" />
-                </methods>
-            </class>
-            <class name="Login" >
-                <methods>
-                    <include name = "loginTest" />
-                </methods>
-            </class>-->
+           </class>
         </classes>
     </test>
 </suite>

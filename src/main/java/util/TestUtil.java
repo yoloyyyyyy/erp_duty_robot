@@ -104,7 +104,7 @@ public class TestUtil {
             if(w<0){
                 w=0;
             }
-            System.out.println(weekDays[w]);
+            System.out.println("今天是"+weekDays[w]);
         }catch (Exception e){
             e.printStackTrace();
         }
