@@ -37,7 +37,7 @@ public class TestMessage {
 
     @Test(dataProvider = "postData")
     public void callRobotTest(String user,String date, String phone) throws Exception {
-        System.out.println("当前日期加一天-----"+TestUtil.getNextDate());
+        System.out.println("当前日期加一天1-----"+TestUtil.getNextDate());
         System.out.println("值班日期-----"+TestUtil.getDate(date));
         if(TestUtil.getNextDate().equals(TestUtil.getDate(date))){
             JSONObject msgJsonString = new JSONObject();
