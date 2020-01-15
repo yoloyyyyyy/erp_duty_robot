@@ -112,7 +112,7 @@ public class TestUtil {
         
     }
     
-    public static String getCurrentDate(){
+    public static String getNextDate(){
         SimpleDateFormat d = new SimpleDateFormat();
         d.applyPattern("yyyy-MM-dd");
         Date nowdate = new Date();

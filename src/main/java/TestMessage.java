@@ -18,7 +18,8 @@ import static util.TestUtil.dtt;
 public class TestMessage {
     RestClient restClient;
     CloseableHttpResponse closeableHttpResponse;
-    String url="https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=03ace3df-6169-4a82-ba66-645810dbcd7f";
+    String erp_url="https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=03ace3df-6169-4a82-ba66-645810dbcd7f";
+    String duty_url="https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=34234527-b46a-4dca-98c5-810f682a4f10";
     String excelData=System.getProperty("user.dir")+"/src/main/resources/ERP值班.xlsx";
     //header
     HashMap<String ,String> postHeader = new HashMap<String, String>();
@@ -36,27 +37,27 @@ public class TestMessage {
 
     @Test(dataProvider = "postData")
     public void callRobotTest(String user,String date, String phone) throws Exception {
-        System.out.println("当前日期加一天-----"+TestUtil.getCurrentDate());
+        System.out.println("当前日期加一天-----"+TestUtil.getNextDate());
         System.out.println("值班日期-----"+TestUtil.getDate(date));
-        JSONObject msgJsonString = new JSONObject();
-        JSONObject jsonObject2 = new JSONObject();
-        msgJsonString.put("msgtype","text");
-        jsonObject2.put("mentioned_mobile_list",phone);
-        if(TestUtil.getWeekByDate(date).equals("星期六")){
-            jsonObject2.put("content","明天是周六~~~ERP值班别忘记了");
-        }else {
-            jsonObject2.put("content","明天ERP值班啦");
-        }
-        msgJsonString.put("text",jsonObject2);
-        System.out.println(msgJsonString);
-        //看当前日期和值班日期
-        if(TestUtil.getCurrentDate().equals(TestUtil.getDate(date))){
-            closeableHttpResponse = restClient.doPost(url,msgJsonString,postHeader);
+        if(TestUtil.getNextDate().equals(TestUtil.getDate(date))){
+            JSONObject msgJsonString = new JSONObject();
+            JSONObject jsonObject2 = new JSONObject();
+            msgJsonString.put("msgtype","text");
+            jsonObject2.put("mentioned_mobile_list",phone);
+            if(TestUtil.getWeekByDate(date).equals("星期六") || TestUtil.getWeekByDate(date).equals("星期日")){
+                jsonObject2.put("content","明天是周末~~~ERP值班别忘记了");
+            }else {
+                jsonObject2.put("content","明天ERP值班啦");
+            }
+            msgJsonString.put("text",jsonObject2);
+            System.out.println(msgJsonString);
+            closeableHttpResponse = restClient.doPost(duty_url,msgJsonString,postHeader);
             int statusCode = TestUtil.getStatusCode(closeableHttpResponse);
             Assert.assertEquals(statusCode,200);
             Reporter.log("状态码："+statusCode,true);
         }
     }
+    
     @Test
     public void taskRemindTest() throws IOException{
         JSONObject msgJsonString = new JSONObject();
@@ -66,9 +67,9 @@ public class TestMessage {
         msgJsonString.put("text",jsonObject2);
         System.out.println(msgJsonString);
         if (TestUtil.isWeekend()){
-            System.out.println("今天休息");
+            Reporter.log(TestUtil.getNextDate()+"今天是周末");
         }else {
-            closeableHttpResponse = restClient.doPost(url,msgJsonString,postHeader);
+            closeableHttpResponse = restClient.doPost(erp_url,msgJsonString,postHeader);
             int statusCode = TestUtil.getStatusCode(closeableHttpResponse);
             Assert.assertEquals(statusCode,200);
             Reporter.log("状态码："+statusCode,true); 
