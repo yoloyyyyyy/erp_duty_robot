@@ -1,6 +1,5 @@
 import net.sf.json.JSONObject;
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -51,12 +50,12 @@ public class TestMessage {
             }
             msgJsonString.put("text",jsonObject2);
             System.out.println(msgJsonString);
-            closeableHttpResponse = restClient.doPost(duty_url,msgJsonString,postHeader);
+/*            closeableHttpResponse = restClient.doPost(duty_url,msgJsonString,postHeader);
             int statusCode = TestUtil.getStatusCode(closeableHttpResponse);
             Assert.assertEquals(statusCode,200);
-            Reporter.log("状态码："+statusCode,true);
+            Reporter.log("状态码："+statusCode,true);*/
         }else{
-            System.out.println("值班机器下线了");
+            System.out.println("明天不值班");
         }
     }
     
@@ -71,10 +70,10 @@ public class TestMessage {
         if (TestUtil.isWeekend()){
             Reporter.log(TestUtil.getNextDate()+"今天是周末");
         }else {
-            closeableHttpResponse = restClient.doPost(erp_url,msgJsonString,postHeader);
+/*            closeableHttpResponse = restClient.doPost(erp_url,msgJsonString,postHeader);
             int statusCode = TestUtil.getStatusCode(closeableHttpResponse);
             Assert.assertEquals(statusCode,200);
-            Reporter.log("状态码："+statusCode,true); 
+            Reporter.log("状态码："+statusCode,true); */
         }
     }
 }
