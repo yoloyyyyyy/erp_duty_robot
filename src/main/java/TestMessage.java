@@ -65,7 +65,7 @@ public class TestMessage {
         JSONObject msgJsonString = new JSONObject();
         JSONObject jsonObject2 = new JSONObject();
         msgJsonString.put("msgtype","text");
-        jsonObject2.put("content","下班前记得填下任务花费，报进度~~");
+        jsonObject2.put("content","下班前记得填下任务花费、日报~~");
         msgJsonString.put("text",jsonObject2);
         System.out.println(msgJsonString);
         if (TestUtil.isWeekend()){
