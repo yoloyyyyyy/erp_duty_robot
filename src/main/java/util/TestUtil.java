@@ -109,7 +109,6 @@ public class TestUtil {
             e.printStackTrace();
         }
         return weekDays[w];
-        
     }
     
     public static String getNextDate(){
