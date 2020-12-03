@@ -46,7 +46,7 @@ public class TestMessage {
             msgJsonString.put("msgtype", "text");
             jsonObject2.put("mentioned_mobile_list", phone);
             if (TestUtil.getWeekByDate(date).equals("星期六") || TestUtil.getWeekByDate(date).equals("星期日")) {
-                jsonObject2.put("content", "明天是" + TestUtil.getWeekByDate(date) + "~~~ERP值班别忘记了");
+                jsonObject2.put("content", "明天是" + TestUtil.getWeekByDate(date) + "~~ERP值班别忘记了");
             } else {
                 jsonObject2.put("content", "明天ERP值班啦");
             }
