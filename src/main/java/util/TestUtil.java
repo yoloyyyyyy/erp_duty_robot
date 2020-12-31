@@ -82,7 +82,6 @@ public class TestUtil {
         SimpleDateFormat sdf = new SimpleDateFormat();
         sdf.applyPattern("yyyy-MM-dd");
         Date dd = DateUtils.addDays(d,Integer.valueOf(date));
-
         String str_date = sdf.format(dd);
         return str_date;
     }
